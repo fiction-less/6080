@@ -1,0 +1,7 @@
+- Minimalistic styling which allows for a simpler and cleaner layout, better accessibillity 
+- Present nav bar allowing for switching between pages
+- Colour of buttons indicating role (red for delete, blue for submit and general use, grey for cancel/edit)
+- Scroll button
+- Card alignment for feed and profiles grouping relevant information
+- Nav bar, usernames etc. can be hovered and become more transparent/have underline indicating they can be interacted with
+- Error popups with relevant error messages

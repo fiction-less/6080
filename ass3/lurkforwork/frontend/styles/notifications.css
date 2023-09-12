@@ -1,0 +1,74 @@
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover
+    Drop down boiler plate from above instread of using bootstrap.
+*/
+
+/* .dropdown-toggle:active {
+    pointer-events: none;
+} */
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    height: 1100%;
+    width: 200%;
+    border: 1px solid #dddddd;;
+    border-radius: 1em;
+    z-index: 1;
+    margin-left: 1rem;
+}
+
+.notifs {
+  font-size: 0.8rem;
+  color: black;
+  padding: 12px 16px;
+  display: block;
+}
+
+.notif-content {
+    position: relative;
+    height: 85%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.highlight-notif:hover {
+    background-color: #f1f1f1;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.clear-notifs {
+    border-top: 1px solid gray;
+    position: absolute;
+    bottom: 0px;
+    cursor: pointer;
+
+}
+
+
+
+.small-text-size {
+    font-size: xx-small;
+}
+
+.no-notifs {
+    padding-top: 50%;
+    text-align: center;
+    font-style: italic;
+    color: rgb(178, 178, 178);
+}
+
+@media (max-width: 400px) {
+    .dropdown-content {
+        width: 170%;
+    }
+}

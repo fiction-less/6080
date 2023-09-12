@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+   <html>
+    <style>
+        table, th, td , form{
+        border:1px solid black;
+        }
+
+    </style>
+    <body>
+
+
+        <table id="table">
+            <tr>
+                <td> Street Name</td>
+                <td>
+                    <input  type="text" id="street"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Suburb</td>
+                <td><input  type ="text" id="suburb"></td>
+            </tr>
+
+            <tr>
+
+                <td>Postcode</td>
+                <td><input  type ="text" id="postcode"></td>
+            </tr>
+
+            <tr>
+                <td>Date of birth</td>
+                <td><input  type ="text" id="dob"></td>
+             </tr>
+            <tr>
+                <td>Building Type</td>
+                <td>
+                    <select id="dropdown">
+                        <option value="apartment" selected>Apartment</option>
+                        <option value="house">House</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Features</td>
+
+                <td>
+
+                    <input type="checkbox" name="check" value="Heating"> Heating <br />
+                    <input type="checkbox" name="check" value="Airconditioning"> AirConditioning <br />
+                    <input type="checkbox" name="check" value="Pool"> Pool <br />
+                    <input type="checkbox" name="check" value="Sandpit"> Sandpit <br />
+                    <button id="select"> Select All</button>
+
+                </td>
+            </tr>
+
+        </table>
+
+        <p><input type="reset" id="reset"></p>
+
+        <textarea id="textbox" rows="10" cols="29">
+        </textarea>
+
+
+        <script type = "text/javascript" src="index.js"></script>
+    </body>
+</html>

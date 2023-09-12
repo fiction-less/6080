@@ -1,0 +1,226 @@
+.post-border {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 0.3em;
+
+}
+
+.post-padding {
+    margin: 10%;
+    padding-top: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+
+/* user pfp: name + icon  */
+.username-size-pos-settings {
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+
+}
+
+.user-PFP-and-user-flex {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+}
+.user-PFP-size {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 1rem;
+}
+
+
+/* job image  */
+.job-image-size {
+    border-radius: 1rem;
+    margin: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height: fit-content;
+}
+
+/* css for the title of a job post */
+.post-title-text-settings {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+/* css for the creation date  */
+.time-text-settings {
+    color: rgb(172, 99, 22);
+}
+
+/* hearting/commenting and the likes states  */
+.heart-icon-size {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.4rem;
+    margin-top: -0.2rem;
+}
+
+
+.like-comment-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 1px solid rgb(218, 218, 218);
+    margin-top: -1.8rem;
+    padding: 1.1em;
+    margin-right: 0.4rem;
+    border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+/* interative comment and hearting css */
+.like-comment-icons {
+    width: 2rem;
+    height: 2rem;
+}
+
+.like-comment-icons-flexbox {
+
+    display: flex;
+    border-radius: 1em;
+    justify-content: center;
+    flex-direction: row;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 0.2rem;
+
+
+}
+.like-comment-icons-flexbox:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+
+/* like stats css  */
+.likes-icon-and-stat-settings {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+    margin-bottom: -2em;
+
+}
+
+.interactive-button-settings {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+}
+
+.num-of-likes {
+    font-size: small;
+    color: rgb(185, 185, 185);
+}
+
+.hover-underline:hover{
+    color:  rgb(0, 140, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.text-make-grey {
+
+    color: rgb(185, 185, 185);
+    margin: 1em;
+}
+
+/* stylise comments */
+.comments-bg {
+
+    border-radius: 0.3em;
+    background-color: rgb(240, 240, 240);
+    padding: 1em;
+    margin: 1.2em;
+    word-wrap: break-word;
+
+}
+
+.get-bottom-border {
+    border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+
+.extra-bottom-padding {
+    margin-bottom: 10rem;
+}
+@media (max-width: 1000px) {
+    .time-text-settings {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .post-padding {
+        margin: 10%;
+    }
+
+    .job-image-size {
+        border-radius: 1rem;
+        margin: 1em;
+        width: 90%;
+    }
+    .text-make-grey {
+        font-size: 0.9rem;
+    }
+
+    .time-text-settings {
+        font-size: 0.8rem;
+    }
+}
+/* phone size activated */
+@media (max-width: 600px) {
+
+    .like-comment-icons {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .like-comment-icons-flexbox {
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+    }
+
+    .user-PFP-size {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .username-size-pos-settings {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+
+    }
+
+    .text-make-grey {
+        font-size: 0.6rem;
+    }
+
+    .time-text-settings {
+        font-size: 0.6rem;
+    }
+
+
+}
+
+
+@media (max-width: 400px) {
+    .post-padding {
+        margin: 1%;
+    }
+}
+
+#feed-btns {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 1.0rem;
+    margin-top: 1.0rem;
+}

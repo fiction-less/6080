@@ -1,0 +1,74 @@
+/* base styles, feel free to edit */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial;
+
+}
+.main {
+    position: relative;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.hand-cursor {
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.centred-text {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.arrow-up {
+    position: fixed;
+    z-index: 1;
+    bottom: 3%;
+    margin-left: 47%
+}
+.fixedPos {
+    top: 50px;
+    position: fixed;
+    z-index: 1;
+    right: 0px;
+}
+
+.arrow-size {
+    width: 3rem;
+    height: 3rem;
+    opacity: 0.3;
+}
+.warning-message {
+    color: red;
+    font-style: italic;
+}
+
+.top-padding {
+    padding-top: 60px;
+}
+
+
+
+@media (max-width: 370px) {
+    .fixedPos {
+        top: 70px;
+        position: fixed;
+        z-index: 1;
+        right: 0px;
+    }
+}

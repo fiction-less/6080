@@ -1,0 +1,234 @@
+body {
+
+    background-color: #f8f8f8;
+    color: #000039;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 24rem;
+    margin-right: 24rem;
+    margin-top: -1rem;
+}
+
+
+.heading {
+    text-align: center;
+    word-spacing: 0.1rem;
+    font-weight: bold;
+    font-size: 2.9rem;
+    line-height: 1.4em;
+}
+
+.yellow-heading {
+
+    word-spacing: 0.4rem;
+    font-weight: bold;
+    font-size: 2.93rem;
+    line-height: 1.4em;
+}
+
+.bold {
+    line-height: 13px;
+    margin-top: 20%;
+    font-weight: bolder;
+    font-size:1.60rem;
+    text-align: center;
+}
+
+.small-text {
+    font-size: 1.0081rem;
+    line-height: 1.6rem;
+}
+
+.med-lrg-text {
+    font-size: 1.55rem;
+}
+
+/* grid instead of flex for fixed layout of 2x3*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 30rem 30rem;
+    margin-top: 8rem;
+    text-align: center;
+
+
+}
+
+.items:hover {
+    opacity: 0.5;
+}
+
+.black-box img{
+    width: 89.1%;
+    height: auto;
+}
+
+.icons1 img {
+    width: 14.1rem;
+    height: auto;
+}
+
+.icons2 img {
+    width: 9.5rem;
+    height: auto;
+}
+
+.purple-bloc {
+    font-size: 1.5rem;
+    color: white;
+    width: 20rem;
+    height: 10rem;
+    background: #8f41ff;
+    border: 0.3rem solid #8f41ff;
+    border-radius: 0.2rem;
+}
+
+.purple-bloc:hover {
+    opacity: 0.7;
+}
+.yellow-box {
+
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: space-around;
+
+    padding-top: 0.8rem;
+    padding-left: 2.3rem;
+    padding-right: 2.3rem;
+    margin-top: 1.3rem;
+
+    height:auto;
+    background: #ffff70;
+
+}
+
+
+.inner-yellow1 {
+
+    margin-top: 5.6rem;
+    margin-right: -1.4rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.apple-store-adj {
+    margin-left: 0.7rem;
+}
+.google-store-adj {
+    margin-top: 0.4rem;
+}
+
+/* makes the page look better */
+@media (max-width: 1600px) {
+    body {
+        margin-left: 20rem;
+        margin-right: 20rem;
+    }
+    .inner-yellow1 {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .black-box img{
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.2rem;
+        width: 13rem;
+        height: auto;
+    }
+}
+
+@media (max-width: 1400px) {
+    body {
+        margin-left: 13rem;
+        margin-right: 13rem;
+    }
+
+}
+
+@media (max-width: 1100px) {
+    body {
+        margin-left: 10rem;
+        margin-right: 10rem;
+    }
+}
+
+
+
+/* phone size activated */
+@media (max-width: 900px) {
+
+    body {
+        margin-top: 2.5rem;
+        margin-left: 10.1rem;
+        margin-right: 10.1rem;
+    }
+
+    .heading {
+
+        font-weight: bold;
+        font-size: 2.2rem;
+        line-height: 2.5rem;
+
+    }
+
+    .container {
+
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .items {
+        margin-bottom: 4.5rem;
+    }
+
+    .small-text {
+        font-size: 1.27rem;
+        text-align: center;
+
+    }
+
+    .gap {
+        margin-bottom: 10rem;
+    }
+
+    .yellow-box {
+        margin-top: 5rem;
+        flex-direction: column;
+
+    }
+
+    .yellow-heading {
+        text-align: center;
+        line-height: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .med-lrg-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 800px) {
+
+    body {
+        margin-top: 2.5rem;
+        margin-left: 5.1rem;
+        margin-right: 5.1rem;
+    }
+}
+@media (max-width: 600px) {
+
+    body {
+        margin-left: 1.1rem;
+        margin-right: 1.1rem;
+    }
+
+}

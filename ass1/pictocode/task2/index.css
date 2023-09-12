@@ -1,0 +1,91 @@
+body {
+    width: 420px;
+    height: 699px;
+    background: repeating-linear-gradient(
+        to right,
+        #021c2d 0px,
+        #021c2d 35px,
+        #00263f 35px,
+        #00263f 70px
+    );
+    /* background-position: 1px; */
+    margin: 0;
+    display: flex;
+    position: relative;
+
+
+}
+
+.white-line {
+    position: absolute;
+    width: 1px;
+    height: 699px;
+    background: white;
+    left: 420px;
+}
+
+
+/* flex box for red blocks to wrap around
+NTS:width and hgt/wdth MUST BE BIG ENOUGH for wrap to work
+   : margin-top only works when container is flex i.e. body*/
+.red-cube {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70px;
+    height: 70px;
+    margin-left: 35px;
+    margin-top: auto;
+
+}
+.red-block {
+    height: 33px;
+    width: 33px;
+    margin: 1px;
+    background: #e94659;
+    box-shadow: inset 0 0 1px 1px  #87384e,
+                0 0 2px 2px #00263f;
+
+}
+
+
+/* outer non-static lower 3 - block-base flexbox
+   inner absolute 1-block head */
+
+.purple-base {
+    position:relative;
+    width: 105px;
+    height: 35px;
+    margin-top: auto;
+    bottom: 209px;
+    left: 35px;
+    display: flex;
+}
+
+.purple-head {
+    position: absolute;
+    bottom: 35px;
+    left:35px;
+}
+
+.purple-block {
+    height: 33px;
+    width: 33px;
+    margin: 1px;
+    background: #ae81ff;
+    box-shadow: inset 0 0 1px 1px  #6b5eb5,
+                0 0 2px 2px #00263f;
+}
+
+
+.purple-base2 {
+    position:relative;
+    width: 105px;
+    height: 35px;
+    margin-top: auto;
+    left: 70px;
+    display: flex;
+}
+
+
+
+

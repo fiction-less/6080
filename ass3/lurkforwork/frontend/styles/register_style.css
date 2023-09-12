@@ -1,0 +1,52 @@
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#register-page {
+    display: flex;
+    justify-content: center;
+}
+
+
+.invalid-feedback {
+    font-size: 0.7rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-element {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.form-label {
+    width: 150px;
+    display: inline-block;
+}
+
+.form-control {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 250px;
+}
+
+/* make sure none display is not overwritten by flex property */
+#register-page.hide {
+    display: none;
+}
+
+#modal-body {
+    padding: 15px;
+}
+
+li {
+    list-style-type: none;
+    padding-right: 30px;
+}

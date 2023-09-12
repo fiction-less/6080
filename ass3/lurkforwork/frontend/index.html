@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LurkForWork</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- You can add your styles and scripts he    <link rel="    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/global.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/register_style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/feed.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/profile.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/notifications.css" />
+
+</head>
+<body class="top-padding">
+
+
+    <!-- This is an example app structure, you can modify this as much as you choose -->
+    <header>
+        <h1>lurkforwork.com</h1>
+        <nav id = "logged-out-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <li class="nav-item" id="nav-register">Register</li>
+            <li class="nav-item" id="nav-login">Login</li>
+        </nav>
+        <nav id = "logged-in-nav" class="hide navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" id ="nav-notifs" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Notifications 📎 <span class='red-text' id="num-notifs"> </span>
+                </button>
+                <div class="dropdown-content dropdown-menu" id="display-notifications">
+                    <div class = " notif-content no-notifs" id="no-notifs"> Nothing to show ! </div>
+                    <div class = " notif-content" id="add-notifications"> </div>
+                    <div class="dropdown-item notifs clear-notifs highlight-notif" id="clear-notifs"> Clear all 🗑️</div>
+                </div>
+            </div>
+            <li class="nav-item" id="nav-profile">Profile</li>
+            <li class="nav-item" id="nav-feed">Feed</li>
+            </li>
+            <li class="nav-item" id="nav-logout">Logout</li>
+        </nav>
+
+    </header>
+
+
+
+    <main role="main" class="main">
+        <!-- MILESTONE 1  -->
+
+        <!-- Modal structure and functionality from bootstrap library for error popups-->
+        <div class="modal fade" id="error-popup" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header centred-text">
+                <h5 class="modal-title">An error occurred!</h5>
+                <button type="button" id="modal-close-btn" class="btn-close" data-dismiss="modal" aria-label="Close">
+                </button>
+                </div>
+                <div id="modal-body">Loading error...</div>
+            </div>
+            </div>
+        </div>
+
+        <!-- MILESTONE 2  -->
+        <div id="logged-in" class="hide">
+            <div class=" arrow-up" id="scroll-up-button">
+                <img src="images/arrowUp.png" class = "arrow-size" alt="scroll up" />
+            </div>
+            <!-- Popup for putting in email to watch another user -->
+            <div class="modal fade" id="watch-popup" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header centred-text">
+                    <h5 class="modal-title">Put in the email of the user you want to watch</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="modal-body">
+                        <div class="form-element">
+                            <label class="form-label">User's email:</label>
+                            <input id="watch-email" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button id="watch-submit-btn" type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="post-job-popup" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header centred-text">
+                    <h5 class="modal-title">Post a job here</h5>
+                    <button type="button" id="modal-close-btn" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                    </div>
+                    <div id="modal-body">
+                        <form name="post_job_form">
+                            <div class="form-element">
+                                <label class="form-label">Title:</label>
+                                <input id = "title-input" name="title" class="form-control" data-trigger="manual" data-placement="bottom" title="Field must not be empty" type="text" required>
+                            </div>
+                            <div class="form-element">
+                                <label class="form-label">Description:</label>
+                                <input id = "description-input" name="description" class="form-control" data-trigger="manual" data-placement="bottom" title="Field must not be empty" type="text" required>
+                            </div>
+                            <div class="form-element ">
+                                <label class="form-label">Start:</label>
+                                <input name="start" class="form-control" type="text" id = 'start-date' data-trigger="manual" data-placement="bottom" title="Must be dd/mm/yyyy format and not a past date" required>
+
+                            </div>
+
+                            <br />
+                            <div class="form-element">
+                                <label>Upload an image:</label>
+                                <input type="file" id="job-image-file" data-trigger="manual" data-placement="bottom" title= "Image required" name="image" required>
+                                <div class= "hide warning-message" id = "job-image-error"> Image required !</div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button id="job-save-btn" type="button" class="btn btn-primary">Post</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div id = display-feed>
+                <div id="feed-btns" class="fixedPos">
+                    <button id="watch-email-btn" type="button" class="btn btn-primary">Watch a user</button>
+                    <button id="post-job-btn" type="button" class="btn btn-primary">Post a job</button>
+                </div>
+
+                <!-- Popup for posting comment -->
+                <div class="modal fade" id="comment-popup" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header centred-text">
+                        <h5 class="modal-title">Write a comment</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="modal-body">
+                            <div class="form-element">
+                                <textarea id="commment-contents" placeholder="Message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button id="comment-post-btn" type="button" class="btn btn-primary">Post</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Area for feed posts -->
+                <div id="feed"></div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body" id='likes-modal-body'></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="profile-page" class="hide container py-5">
+                <!-- Modal for editing jobs -->
+                <div class="modal fade" id="edit-job-popup" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header centred-text">
+                        <h5 class="modal-title">Edit this job</h5>
+                        <button type="button" id="modal-close-btn" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                        </div>
+                        <div id="modal-body">
+                            <form name="edit_job_form">
+                                <div class="form-element">
+                                    <label class="form-label">Title:</label>
+                                    <input name="title" class="form-control" type="text" required>
+                                </div>
+                                <div class="form-element">
+                                    <label class="form-label">Description:</label>
+                                    <input name="description" class="form-control" type="text" required>
+                                </div>
+                                <div class="form-element">
+                                    <label class="form-label">Start:</label>
+                                    <input id = "edit-start" name="start" class="form-control" data-trigger="manual" data-placement="bottom" title="Must be dd/mm/yyyy format and not a past date" type="text" required>
+                                </div>
+                                <div class="form-element">
+                                    <label>Upload an image:</label>
+                                    <input type="file" id="new-job-image-file" name="image" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button id="job-edit-save-btn" type="button" class="btn btn-primary">Post</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div id="info-box">
+                    <!-- Profile template from https://mdbootstrap.com/docs/standard/extended/profiles/ -->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-body text-center">
+                                    <!-- Avatar icon taken from https://www.flaticon.com/free-icon/user_149071?term=avatar&page=1&position=3&origin=tag&related_id=149071 -->
+                                    <img id="profile-image" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar"
+                                        class="rounded-circle img-fluid" style="width: 150px;">
+                                    <h5 class="my-3" id="profile-name">Loading name...</h5>
+                                    <p id="profile-id" class="text-muted mb-1">Loading id...</p>
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <div id="profile-watch-box" >
+                                            <button id="watch-btn" type="button" class="btn btn-primary">Watch this user</button>
+                                        </div>
+                                        <button id="update-profile-btn" type="button" class="hide btn btn-outline-primary ms-1">Edit profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Email:</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0" id="profile-email">Loading email...</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Watchers count:</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0" id="profile-watchers-count">Loading count...</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Jobs count:</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0" id="profile-jobs-count">Loading count...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0 centred-text">Jobs</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div id="profile-jobs">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0 centred-text">Watched by</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div id="profile-watchers">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="edit-profile-popup" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header centred-text">
+                        <h5 class="modal-title">Edit your details</h5>
+                        <button type="button" id="modal-close-btn" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                        </div>
+                        <div id="modal-body">
+                            <form name="edit_profile_form">
+                                <div class="form-element">
+                                    <label class="form-label">Email:</label>
+                                    <input name="email" class="form-control" type="text">
+                                </div>
+                                <div class="form-element">
+                                    <label class="form-label">New password:</label>
+                                    <input name="password" class="form-control" type="text">
+                                </div>
+                                <div class="form-element">
+                                    <label class="form-label">Name:</label>
+                                    <input name="name" class="form-control" type="text">
+                                </div>
+                                <div class="form-element">
+                                    <label>Upload a profile picture:</label>
+                                    <input type="file" id="profile-image-file" name="image">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button id="profile-save-btn" type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="logged-out">
+            <div id="login-page" novalidate>
+                <form name="login_form">
+                    <h2>Login here!</h2>
+                    <div class="form-element">
+                        <label for="validationCustom05" class="form-label login-form-input">Email:</label>
+                        <input name="email" class="form-control" id="validationCustom05" type="text" required>
+                    </div>
+                    <div class="form-element">
+                        <label for="validationCustom06" class="form-label login-form-input">Password:</label>
+                        <input name="password" class="form-control" id="validationCustom06" type="text" required>
+                    </div>
+                    <div class="form-element">
+                        <div id="login-submit-btn"><input name="submit_btn" type="submit" value="Login" class="btn btn-outline-primary"></div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="register-page" class="hide" novalidate>
+                <form name="register_form">
+                    <h2>Register here!</h2>
+                    <div class="form-element">
+                        <label for="validationCustom01" class="form-label reg-form-input">Email:</label>
+                        <input name="email" class="form-control" id="validationCustom01" type="text" required>
+                        <div class="invalid-feedback">Invalid email, try again!</div>
+                    </div>
+                    <div class="form-element">
+                        <label for="validationCustom02" class="form-label reg-form-input">Name:</label>
+                        <input name="name" class="form-control" id="validationCustom02" type="text" required>
+                        <div class="invalid-feedback">Invalid name, must be between 1 and 30 characters!</div>
+                    </div>
+                    <div class="form-element">
+                        <label for="validationCustom03" class="form-label reg-form-input">Password:</label>
+                        <input name="password" class="form-control" id="validationCustom03" type="text" required>
+                        <div class="invalid-feedback">Invalid password, must not be empty!</div>
+                    </div>
+                    <div class="form-element">
+                        <label for="validationCustom04" class="reg-form-label">Confirm password:</label>
+                        <input name="confirm_password" class="form-control" id="validationCustom04" type="text" required>
+                    </div>
+                    <div class="form-element">
+                        <div id="reg-submit-btn"><input name="submit_btn" type="submit" value="Register" class="btn btn-outline-primary"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+    <footer>
+        <p>&copy; lurkforwork.com 2022</p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/feed.js"></script>
+    <script type="module" src="src/register_login.js"></script>
+    <script type="module" src="src/profile.js"></script>
+    <script type="module" src="src/job.js"></script>
+    <script type="module" src="src/polling.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ript>
+"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
